@@ -37,6 +37,11 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+
+$routes->group('api/v1/', ['namespace' => 'App\Controllers\Api'], function ($routes) {
+    $routes->get('empleados', 'Empleados::index');
+}); 
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
