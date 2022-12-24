@@ -6,9 +6,9 @@ class EmpleadoModel extends Model
 {
 
     protected $table = "empleado";
-    protected $primaryKey = "id_empleado";
+    protected $primaryKey  = "id_empleado";
     protected $returnType = "array";
-    protected $allowedField = ['nombre', 'apellido', 'edad', 'fecha_nacimiento', 'fecha_ingreso', 'fecha_termino_contrato', 'flg_estd'];
+    protected $allowedFields = ['nombre', 'apellido', 'edad', 'fecha_nacimiento', 'fecha_ingreso', 'fecha_termino_contrato', 'flg_estd'];
 
     protected $useTimestamps = false;
 
@@ -16,8 +16,8 @@ class EmpleadoModel extends Model
     protected $validationRules = [
         'nombre' => 'required|alpha_space|min_length[3]|max_length[30]',
         'apellido' => 'required|alpha_space|min_length[3]|max_length[15]',
-        'edad' => 'required|alpha_space|max_length[2]',
-        'flg_estd' => 'required|alpha_space|max_length[1]',
+        'edad' => 'required|alpha_numeric_space|max_length[2]',
+        'flg_estd' => 'required|max_length[1]',
     ];
 
     protected $validationMessages = [

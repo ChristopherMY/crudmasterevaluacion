@@ -37,10 +37,17 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+// Aqui registramos el grupo de rutas para mi api empleados
+// Mantenimiento leer, crear, modificar y elimianr
+// GET, POST, PUT, DELETE
 
 $routes->group('api/v1/', ['namespace' => 'App\Controllers\Api'], function ($routes) {
-    $routes->get('empleados', 'Empleados::index');
-}); 
+    $routes->get('empleados', 'Empleados::index'); // Lista toda la tabla empleados
+    $routes->post('empleados', 'Empleados::create'); // Crea un nuevo empleado
+    $routes->get('empleados/find/(:num)', 'Empleados::find/$1'); // Busca un empleado
+    $routes->put('empleados', 'Empleados::updated'); // Modifica un empleado
+    $routes->delete('empleados/(:num)', 'Empleados::deleted/$1'); // Elimina a un empleado
+});
 
 /*
  * --------------------------------------------------------------------
